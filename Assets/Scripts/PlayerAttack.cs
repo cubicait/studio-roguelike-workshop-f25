@@ -3,28 +3,13 @@ using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour
 {
-
-    new Camera camera; 
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        camera = Camera.main;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void OnClick(InputValue value)
     {
         if (value.isPressed)
         {
             //converts where you clicked on screen to a world position
             Vector3 mouseScreenPos = Mouse.current.position.ReadValue();
-            Vector3 mouseWorldPos = camera.ScreenToWorldPoint(mouseScreenPos + new Vector3(0, 0, camera.nearClipPlane));
+            Vector3 mouseWorldPos = GetComponent<Camera>().ScreenToWorldPoint(mouseScreenPos + new Vector3(0, 0, GetComponent<Camera>().nearClipPlane));
 
             //Debug.Log(mouseWorldPos);
 
@@ -32,7 +17,6 @@ public class PlayerAttack : MonoBehaviour
             dir.Normalize();
 
             GetComponent<Weapon>().Shoot(dir);
-        }
-        
+        }   
     }
 }
