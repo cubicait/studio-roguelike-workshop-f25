@@ -66,5 +66,5 @@
     "explorer.fileNesting.patterns": {
         "*.sln": "*.csproj"
     },
-    "dotnet.defaultSolution": "studio-roguelike-workshop-f25.slnx"
+    "dotnet.defaultSolution": "studio-roguelike-workshop-f25.sln"
 }
