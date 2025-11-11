@@ -3,35 +3,31 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
     //variables
-    public int maxHealth = 10;
-    public int currentHealth;
-    private bool isDead = false; //private. only this script can access it
+    public int MaxHealth = 10;
+    public int CurrentHealth;
+    private bool dead = false; //private. only this script can access it
+    [SerializeField] public int MovementSpeed = 2;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
-        
+        CurrentHealth = MaxHealth;
     }
 
-    public void TakeDamage(int damage) 
+    public void TakeDamage(int damage)
     {
-        if (isDead) return; //if already dead, do nothing
+        if (dead) return; //if already dead, do nothing
 
-        currentHealth -= damage;
-        if (currentHealth <= 0) {
+        CurrentHealth -= damage;
+
+        if (CurrentHealth <= 0)
+        {
             Die();
         }
     }
 
-    public void Die() 
+    private void Die()
     {
-        isDead = true;
+        dead = true;
         Destroy(gameObject); //deletes the game object from the scene in game
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
